@@ -104,7 +104,7 @@ gitment:
 gitalk:
     enable: true #是否开启
     githubID: lbcqc #你的Github用户名
-    repo: lbcqc.github.io #Github仓库名称
+    repo: blog-comments #Github仓库名称
     owner: lbcqc
     adminUser: moshiyeap # 评论初始化账户(GitHub ID)
     distractionFreeMode: true # 是否开启分心自由模式 也就是免打扰
