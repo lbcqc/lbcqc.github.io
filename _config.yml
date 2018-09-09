@@ -102,8 +102,12 @@ gitment:
         client_secret: b42a4178e5fd4a7cf63189ef4b1453b05c375709
 # https://github.com/gitalk/gitalk#install
 gitalk:
+    enable: true #是否开启
+    githubID: lbcqc #你的Github用户名
+    repo: lbcqc.github.io #Github仓库名称
     owner: lbcqc
-    repo: blog-comments
+    adminUser: moshiyeap # 评论初始化账户(GitHub ID)
+    distractionFreeMode: true # 是否开启分心自由模式 也就是免打扰
     clientID: 30d1ecab8575bf1ab9d4
     clientSecret: ecca20f7471854e677a2ff25e0ca61d1e34d3547
 # 在使用其它评论组件时可点击显示 Disqus
