@@ -7,7 +7,7 @@ comments: true
 menu: 关于
 permalink: /about/
 ---
-既然没法选择了，就坚强的走下去吧
+呃呃呃呃呃，记录一下工作与生活。
 
 ## 联系
 
