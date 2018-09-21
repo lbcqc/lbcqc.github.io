@@ -5,10 +5,10 @@ baseurl:
 url: https://lbcqc.github.io/
 date_format: "ordinal"
 title: kangkang历险记
-subtitle: "有的时候就是不能怂"
+subtitle: "RW NERVER GIVE UP"
 description: "个人博客"
 keywords: kangkang, shl
-timezone: Asia/ShenZhen
+timezone: Asia/Shanghai
 encoding: "utf-8"
 side_bar_repo_limit: 5
 
