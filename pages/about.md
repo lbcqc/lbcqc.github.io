@@ -14,6 +14,7 @@ permalink: /about/
 {% for website in site.data.social %}
 * {{ website.sitename }}：[@{{ website.name }}]({{ website.url }})
 {% endfor %}
+* 邮箱：shuaili7194@qq.com
 
 ## Skill Keywords
 
