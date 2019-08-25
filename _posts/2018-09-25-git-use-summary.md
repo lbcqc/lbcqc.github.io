@@ -12,7 +12,7 @@ keywords: git, github
 
 这里在GITHUB.COM上直接修改README.md文件作为示例，修改前README.md文件内容如下所示
 
-![readme.md.1](../data/images/git_use_summary/git_cat_readme1.png)
+![readme.md.1](/data/images/git_use_summary/git_cat_readme1.png)
 
 直接在README.md文件末尾添加了一条语句提交。内容看后面。
 
@@ -22,7 +22,7 @@ keywords: git, github
 ```
  git diff master origin/master
 ```
-![git_diff_master_origin_master1](../data/images/git_use_summary/git_diff_master_origin_master1.png)
+![git_diff_master_origin_master1](/data/images/git_use_summary/git_diff_master_origin_master1.png)
 
 这里有一个坑，git本地有一个origin/master分支，diff比较的是我们是本地的master分支和origin/master，如果我们没有更新origin/master分支到最新状态，得不到最新结果，使用fetch命令更新
 
@@ -31,11 +31,11 @@ keywords: git, github
 ```
 git fetch origin
 ```
-![git_fetch_origin](../data/images/git_use_summary/git_fetch_origin.png)
+![git_fetch_origin](/data/images/git_use_summary/git_fetch_origin.png)
 
 这时候再重新比较就有结果了，如下所示
 
-![git_diff_master_origin_master2](../data/images/git_use_summary/git_diff_master_origin_master2.png)
+![git_diff_master_origin_master2](/data/images/git_use_summary/git_diff_master_origin_master2.png)
 
 ## 3. 拉取远程origin/master分支到本地master分支
 
@@ -43,17 +43,17 @@ git fetch origin
 ```
 git pull origin master:master
 ```
-![git_pull_origin](../data/images/git_use_summary/git_pull_origin.png)
+![git_pull_origin](/data/images/git_use_summary/git_pull_origin.png)
 
 再次比较结果如下
 ```
  git diff master origin/master
 ```
-![git_diff_master_origin_master2](../data/images/git_use_summary/git_diff_master_origin_master1.png)
+![git_diff_master_origin_master2](/data/images/git_use_summary/git_diff_master_origin_master1.png)
 
 查看README.md文件内容如下
 
-![readme.md.2](../data/images/git_use_summary/git_cat_readme2.png)
+![readme.md.2](/data/images/git_use_summary/git_cat_readme2.png)
 
 
 # 二、提交本地更新到远程服务器
