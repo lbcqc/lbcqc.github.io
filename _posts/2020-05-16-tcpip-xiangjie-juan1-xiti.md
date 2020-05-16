@@ -6,6 +6,8 @@ description: 学习TCP/IP详解卷一的过程中，记录下本书习题上的�
 keywords: tcp/ip, network
 ---
 
+学习TCP/IP详解卷一的过程中，为了加深理解，书本后面的习题基本都做了，此处记录下来。  
+
 # TCP/IP详解课后习题（卷一）
 
 ## 第一章. 概述
