@@ -1,14 +1,12 @@
 ---
 layout: post
-title: TCP/IP详解 卷一 习题
+title: TCP/IP详解课后习题（卷一）
 categories: [network]
 description: 学习TCP/IP详解卷一的过程中，记录下本书习题上的解答
 keywords: tcp/ip, network
 ---
 
 学习TCP/IP详解卷一的过程中，为了加深理解，书本后面的习题基本都做了，此处记录下来。  
-
-# TCP/IP详解课后习题（卷一）
 
 ## 第一章. 概述
 
@@ -54,13 +52,13 @@ keywords: tcp/ip, network
 
 1. 如果你的系统支持netstat(1)命令（参见3.9节），那么请用它确定系统上的接口及其MTU。
 
-```shell
-➜  ~ netstat -i    
-Kernel Interface table
-Iface             MTU    RX-OK RX-ERR RX-DRP RX-OVR    TX-OK TX-ERR TX-DRP TX-OVR Flg
-eth0             1500    18375      0      0 0         11346      0      0      0 BMRU
-lo              65536      226      0      0 0           226      0      0      0 LRU
-```
+    ```shell
+    ➜  ~ netstat -i    
+    Kernel Interface table
+    Iface             MTU    RX-OK RX-ERR RX-DRP RX-OVR    TX-OK TX-ERR TX-DRP TX-OVR Flg
+    eth0             1500    18375      0      0 0         11346      0      0      0 BMRU
+    lo              65536      226      0      0 0           226      0      0      0 LRU
+    ```
 
 ## 第三章 IP：网际协议
 
@@ -188,18 +186,18 @@ lo              65536      226      0      0 0           226      0      0      
 
 5.  在图2-4中，ping环回地址与ping主机以太网地址会出现什么不同？
 
-``` shell
-svr4 % ping -R localhost
-PING localhost (127.0.0.1): 56 data bytes
-64 bytes from 127.0.0.1: icmp_seq=0 ttl=254 time=0 ms
-RR：    localhost (127.0.0.1)
-64 bytes from 127.0.0.1: icmp_seq=1 ttl=254 time=0 ms (same route)
-64 bytes from 127.0.0.1: icmp_seq=2 ttl=254 time=0 ms (same route)
-^?
---- localhost ping statistics ---
-3 packets transmitted, 3 packets received, 0% packet loss
-route-trip min/avg/max = 0/0/0 ms
-```
+    ``` shell
+    svr4 % ping -R localhost
+    PING localhost (127.0.0.1): 56 data bytes
+    64 bytes from 127.0.0.1: icmp_seq=0 ttl=254 time=0 ms
+    RR：    localhost (127.0.0.1)
+    64 bytes from 127.0.0.1: icmp_seq=1 ttl=254 time=0 ms (same route)
+    64 bytes from 127.0.0.1: icmp_seq=2 ttl=254 time=0 ms (same route)
+    ^?
+    --- localhost ping statistics ---
+    3 packets transmitted, 3 packets received, 0% packet loss
+    route-trip min/avg/max = 0/0/0 ms
+    ```
 
 ## 第八章 Traceroute 程序
 
@@ -266,23 +264,23 @@ route-trip min/avg/max = 0/0/0 ms
 
 5. 检查你所使用的系统上的路由表，并解释每一项内容。
 
-```
-Kernel IP routing table
-Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
-default         bogon           0.0.0.0         UG    0      0        0 eth0
-172.17.0.0      0.0.0.0         255.255.0.0     U     0      0        0 eth0
-```
+    ```
+    Kernel IP routing table
+    Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+    default         bogon           0.0.0.0         UG    0      0        0 eth0
+    172.17.0.0      0.0.0.0         255.255.0.0     U     0      0        0 eth0
+    ```
 
-列 | 含义
-------- | ------- 
- | Destination | 目的地址
- | Gateway | 下一跳地址
- | Genmask | 掩码，用于比较确定网络号+子网号
- | Flags | 使用标识，U表示该表项正在失败，G表示非直连网段，H表示目的地址为主机地址
- | Metric | 路由长度
- | Ref | 正在被进程引用数
- | Use | 正在使用
- | Iface | 发送报文的网络接口
+    列 | 含义
+    ------- | ------- 
+    Destination | 目的地址
+    Gateway | 下一跳地址
+    Genmask | 掩码，用于比较确定网络号+子网号
+    Flags | 使用标识，U表示该表项正在失败，G表示非直连网段，H表示目的地址为主机地址
+    Metric | 路由长度
+    Ref | 正在被进程引用数
+    Use | 正在使用
+    Iface | 发送报文的网络接口
 
 
  ## 第十章 动态选路协议
@@ -327,6 +325,7 @@ default         bogon           0.0.0.0         UG    0      0        0 eth0
 
     第一片数据包长度为1472，除第一片数据包后剩余长度为$8192-1472=6720$，剩下的报文分片不需要UDP首部，最长数据包长度为1480，正好是8的整数倍，还可分$6720 \div 1480 \approx 4.5$即5片数据报  
     故而需要分成6片，每片数据包的偏移和长度分别如下表格所示：  
+    
     Index | offset | length
     ----- | ------ | ------
     1     | 0      | 1472
@@ -342,8 +341,9 @@ default         bogon           0.0.0.0         UG    0      0        0 eth0
     $8192 - 520 = 7672$，剩余数据包长度为7672；    
     $552 - 20 = 532$， $532 \div 8 = 66.5$， $66 * 8 = 528$，剩余数据包分片大小为528；    
     $7672 \div 528 \approx 14.5$，甚于数据包可分15片；    
-    $7672 - 14 * 528 = 280 $，最后一片大小为280Byte。
+    $7672 - 14 * 528 = 280$，最后一片大小为280Byte。
     最终分为16片，每片长度如下所示：
+    
     Index | offset | length
     ----- | ------ | ------
     1     | 0      | 520
@@ -398,36 +398,39 @@ default         bogon           0.0.0.0         UG    0      0        0 eth0
 
 3. 登录到一个过去从来没有用过的Unix系统，并且打算找出所有支持广播的接口的指向子网的广播地址。如何做到这点？
 
-    只需向内核请求所有接口的信息，例如ifconfig, 看是否有广播支持标志BROADCAST，看其子网广播地址broadcast，如下所示：
-```
-➜  ~ ifconfig 
-eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
-        inet 172.17.0.2  netmask 255.255.0.0  broadcast 172.17.255.255
-        ether 02:42:ac:11:00:02  txqueuelen 0  (Ethernet)
-        RX packets 1213  bytes 81252 (79.3 KiB)
-        RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 1290  bytes 117683 (114.9 KiB)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+    只需向内核请求所有接口的信息，例如ifconfig, 看是否有广播支持标志BROADCAST，看其子网广播地址broadcast，如下所示：  
 
-lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
-        inet 127.0.0.1  netmask 255.0.0.0
-        loop  txqueuelen 1  (Local Loopback)
-        RX packets 0  bytes 0 (0.0 B)
-        RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 0  bytes 0 (0.0 B)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
-```
+    ```
+    ➜  ~ ifconfig 
+    eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+            inet 172.17.0.2  netmask 255.255.0.0  broadcast 172.17.255.255
+            ether 02:42:ac:11:00:02  txqueuelen 0  (Ethernet)
+            RX packets 1213  bytes 81252 (79.3 KiB)
+            RX errors 0  dropped 0  overruns 0  frame 0
+            TX packets 1290  bytes 117683 (114.9 KiB)
+            TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+    lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+            inet 127.0.0.1  netmask 255.0.0.0
+            loop  txqueuelen 1  (Local Loopback)
+            RX packets 0  bytes 0 (0.0 B)
+            RX errors 0  dropped 0  overruns 0  frame 0
+            TX packets 0  bytes 0 (0.0 B)
+            TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+    ```
+
     其中eth0接口支持广播，其子网广播地址为172.17.255.255  
 
 4. 如果我们用ping程序向一个广播地址发送一个长的分组，如 (略)， 它正常工作，但将分组的长度再增加一个字节后出现如下差错：
-```
-sun % ping 140.252.13.63 1473
-PING 140.252.13.63: 1473 data bytes
-sendto: Message too long
-```
-究竟出了什么问题?  
 
-可能是发送端设置了不允许分片，导致ping程序无法发出需要分片的广播报文。    
+    ```
+    sun % ping 140.252.13.63 1473
+    PING 140.252.13.63: 1473 data bytes
+    sendto: Message too long
+    ```
+
+    究竟出了什么问题?  
+    可能是发送端设置了不允许分片，导致ping程序无法发出需要分片的广播报文。  
 
 5. 重做习题10.6，假定8个RIP报文是通过多播而不是广播（使用RIP 版本2）。有什么变化？
 
@@ -447,31 +450,30 @@ sendto: Message too long
 
 1. 讨论一个DNS名字解析器和一个DNS名字服务器作为客户程序、服务器或同时作为客户和服务器的情况。
 
-* 分别作为解析器和服务器
+   * 分别作为解析器和服务器
 
-    名字解析器首先通过/etc/resolv.conf获取域名服务器A，向域名服务器A发送IP查询请求，域名服务器向根名字服务器查询域名所在的名字服务器，接收到根名字服务器的返回结果B后，A向名字服务器B发送IP查询，A收到名字服务器B的结果后将器缓存到自身磁盘中，并返回给名字解析器。  
+        名字解析器首先通过/etc/resolv.conf获取域名服务器A，向域名服务器A发送IP查询请求，域名服务器向根名字服务器查询域名所在的名字服务器，接收到根名字服务器的返回结果B后，A向名字服务器B发送IP查询，A收到名字服务器B的结果后将器缓存到自身磁盘中，并返回给名字解析器。  
 
-* 同时作为解析器与服务器
+   * 同时作为解析器与服务器
     
-    名字解析器在自身缓存中直接获取到目标域名的IP地址，直接使用，无需向域名服务器发送查询请求。  
-
+        名字解析器在自身缓存中直接获取到目标域名的IP地址，直接使用，无需向域名服务器发送查询请求。  
 
 2. 说明图14-12中构成响应的75个字节的含义。
 
     首部
 
-* 20字节IP头
-* 8字节UDP头
-* 12字节DNS首部
+      * 20字节IP头
+      * 8字节UDP头
+      * 12字节DNS首部
 
     RR
 
-* 21字节域名
-* 2字节类型
-* 2字节类
-* 4字节TTL
-* 2字节长度
-* 4字节IP地址
+      * 21字节域名
+      * 2字节类型
+      * 2字节类
+      * 4字节TTL
+      * 2字节长度
+      * 4字节IP地址
 
 3. 在12.3节我们指出，一个既可接受点分十进制形式的IP地址、也可接收主机名的应用程序，应先假定输入的是IP地址，如果失败，再假定是主机名。如果改变这个测试顺序会出现什么情况？
 
@@ -532,25 +534,25 @@ sendto: Message too long
 
 1. 我们已经介绍了以下几种分组格式： IP、ICMP、IGMP、UDP和TCP。每一种格式的首部中均包含一个检验和。对每种分组，说明检验和包括IP数据报中的哪些部分，以及该检验和是强制的还是可选的。
    
-* IP
+   * IP
 
-    IP分组校验和仅包含IP首部，同时不含有首部中的校验和字段。IP首部校验和是可选的。  
+        IP分组校验和仅包含IP首部，同时不含有首部中的校验和字段。IP首部校验和是可选的。  
 
-* ICMP
+   * ICMP
 
-    ICMP校验和字段含ICMP报文首部及数据段。ICMP检验和是必须的。  
+        ICMP校验和字段含ICMP报文首部及数据段。ICMP检验和是必须的。  
 
-* IGMP
+   * IGMP
 
-    IGMP校验和字段含IGMP报文首部及数据段。IGMP校验和是必须的。  
+        IGMP校验和字段含IGMP报文首部及数据段。IGMP校验和是必须的。  
 
-* UDP
+   * UDP
 
-    UDP检验和包含报文首部和数据，同时含有一个伪首部。UDP首部校验和是必须的。  
+        UDP检验和包含报文首部和数据，同时含有一个伪首部。UDP首部校验和是必须的。  
 
-* TCP
+   * TCP
 
-    TCP检验和包含报文首部和数据，同时含有一个伪首部。TCP首部校验和是必须的。  
+        TCP检验和包含报文首部和数据，同时含有一个伪首部。TCP首部校验和是必须的。  
 
 2. 为什么我们已经讨论的所有Internet协议（IP, ICMP, IGMP, UDP, TCP）收到有检验和错的分组都仅作丢弃处理？
 
@@ -580,13 +582,13 @@ sendto: Message too long
 
 3. 半打开连接和半关闭连接的区别是什么？
 
-* 半打开
-    
-    指双方建立连接后，有一方退出但是没有通知对端FIN或RST，导致对端不知道其已退出，此时对端就是半打开状态。  
+   * 半打开
+       
+       指双方建立连接后，有一方退出但是没有通知对端FIN或RST，导致对端不知道其已退出，此时对端就是半打开状态。  
 
-* 半关闭
+   * 半关闭
 
-    指双方建立连接后，有一方退出，并且通知了对端，对端收到FIN之后回了ACK，但是还没有发送FIN关闭自身的连接时，此时就属于半关闭状态。  
+       指双方建立连接后，有一方退出，并且通知了对端，对端收到FIN之后回了ACK，但是还没有发送FIN关闭自身的连接时，此时就属于半关闭状态。  
 
 4. 如果启动sock程序作为一个服务器程序，然后终止它（还没有客户进程与它相连接），我们能立即重新启动这个服务器程序。这意味着它没有经历2MSL等待状态。用状态变迁来解释这一切。
 
