@@ -1,7 +1,7 @@
 ---
 layout: post
 title: TCP/IP详解课后习题（卷一）
-categories: [network]
+categories: [Network]
 description: 学习TCP/IP详解卷一的过程中，记录下本书习题上的解答
 keywords: tcpip,network
 ---
@@ -24,7 +24,7 @@ keywords: tcpip,network
     [RFC 1122](https://tools.ietf.org/html/rfc1122)  
     [RFC 1123](https://tools.ietf.org/html/rfc1123)
 
-4.  获取一份最新的赋值RFC拷贝。“quote of the day”协议的有名端口号是什么？哪个RFC对该协议进行了定义？  
+4. 获取一份最新的赋值RFC拷贝。“quote of the day”协议的有名端口号是什么？哪个RFC对该协议进行了定义？  
 
     qotd             17/tcp    Quote of the Day  
     qotd             17/udp    Quote of the Day  
@@ -47,13 +47,12 @@ keywords: tcpip,network
 
     同2，略
 
-
 ## 第二章 链路层
 
 1. 如果你的系统支持netstat(1)命令（参见3.9节），那么请用它确定系统上的接口及其MTU。
 
     ```shell
-    ➜  ~ netstat -i    
+    ➜  ~ netstat -i
     Kernel Interface table
     Iface             MTU    RX-OK RX-ERR RX-DRP RX-OVR    TX-OK TX-ERR TX-DRP TX-OVR Flg
     eth0             1500    18375      0      0 0         11346      0      0      0 BMRU
