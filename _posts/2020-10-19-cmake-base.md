@@ -1,7 +1,7 @@
 ---
 layout: post
 title: CMake：基本用法
-categories: [CMake]
+categories: [Build Tools]
 description: some word here
 keywords: keyword1, keyword2
 ---

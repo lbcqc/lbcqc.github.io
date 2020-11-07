@@ -1,7 +1,7 @@
 ---
 layout: post
 title: CMake：变量
-categories: [CMake]
+categories: [Build Tools]
 description: CMake 变量
 keywords: CMake, Variable
 

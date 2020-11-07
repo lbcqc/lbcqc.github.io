@@ -2,7 +2,7 @@
 
 layout: post
 title: CMake：安装
-categories: [CMake]
+categories: [Build Tools]
 description: some word here
 keywords: keyword1, keyword2
 
